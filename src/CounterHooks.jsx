@@ -1,17 +1,20 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
+import { ThemeContext } from "./App";
 
 function CounterHooks({ initialCount }) {
     console.log('Render Hooks')
     const [count, setCount] = useState(initialCount)
+    const style = useContext(ThemeContext)
 
     function buttonState(amt) {
         setCount((prevState) => prevState + amt)
     }
     return (
         <>
-            <button onClick={() => buttonState(1)}>+</button>
+            {console.log(style, 'style')}
+            <button style={style} onClick={() => buttonState(1)}>+</button>
             <p>{count}</p>
-            <button onClick={() => buttonState(-1)}>-</button>
+            <button style={style} onClick={() => buttonState(-1)}>-</button>
         </>
     )
 }
