@@ -3,11 +3,15 @@ import { useState } from "react";
 function CounterHooks({ initialCount }) {
     console.log('Render Hooks')
     const [count, setCount] = useState(initialCount)
+
+    function buttonState(amt) {
+        setCount((prevState) => prevState + amt)
+    }
     return (
         <>
-            <button onClick={() => setCount((prevState) => prevState + 1)}>+</button>
+            <button onClick={() => buttonState(1)}>+</button>
             <p>{count}</p>
-            <button onClick={() => setCount((prevState) => prevState - 1)}>-</button>
+            <button onClick={() => buttonState(-1)}>-</button>
         </>
     )
 }
